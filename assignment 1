@@ -1,0 +1,46 @@
+SELECT guards , count(tree_id) as Number_of_Trees 
+FROM `bigquery-public-data.new_york.tree_census_2015` 
+group by guards 
+
+SELECT MIN (tree_dbh) as min_Diamater
+FROM `bigquery-public-data.new_york.tree_census_2015` 
+
+SELECT tree_id , health
+FROM `bigquery-public-data.new_york.tree_census_2015` 
+Where health = 'Poor'
+order by tree_id  
+limit 500
+
+SELECT zip_city , count(tree_id) as Number_of_Trees
+FROM `bigquery-public-data.new_york.tree_census_2015` 
+group by zip_city
+
+SELECT spc_common , count(tree_id) as No_Trees
+FROM `bigquery-public-data.new_york.tree_census_2015` 
+group by spc_common 
+Having count(tree_id) < 100
+
+SELECT x_sp, y_sp , tree_dbh
+FROM `bigquery-public-data.new_york.tree_census_2015` 
+order by tree_dbh
+limit 100
+
+SELECT latitude , health
+FROM `bigquery-public-data.new_york.tree_census_2015` 
+Where latitude <= 40.4985987
+order by latitude 
+
+SELECT root_stone , spc_latin, count(tree_id) as Number_of_Trees
+FROM `bigquery-public-data.new_york.tree_census_2015` 
+group by spc_latin, root_stone
+having spc_latin = 'Tilia cordata'
+
+SELECT stump_diam , count(tree_id) as Number_of_Trees
+FROM `bigquery-public-data.new_york.tree_census_2015` 
+group by  stump_diam
+HAVING stump_diam < 50
+order by stump_diam 
+
+SELECT count(tree_id) as Number_Trees, created_at
+FROM `bigquery-public-data.new_york.tree_census_2015` 
+group by created_
